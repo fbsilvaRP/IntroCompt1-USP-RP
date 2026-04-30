@@ -1,30 +1,25 @@
-//Programa feito Por Felipe Braga em 29/04/2026.
+//feito Por Felipe Braga em 29/04/2026.
 
-//Enunciado direto ao ponto:
-
-/*escrever um programa que, dados dois inteiros N e M, determine o número máximo de casas que
-podem receber números entre N e M, incluindo-os, sem dígitos repetidos.
-
-Entrada: Cada caso de teste é descrito em uma linha. A linha
-contém dois inteiros N e M, conforme descrito acima (100 ≤ N ≤ M ≤ 999).
-Saída: Para cada caso de teste, imprima uma linha com um inteiro
-representando a quantidade de números de casas entre N e M,
-inclusive, sem dígitos repetidos.
+//Observações:
+/*
+	O operador % retorna o resto da divisão - ex: 10 % 3 = 1; 
+	O operador / retornará a divisão inteira caso as variáveis utilizadas sejam do tipo inteiro; 
 */
 
 #include <stdio.h>
 int main()
 {
 	//Definição de variáveis
+	
 	int l_min = 0;
 	int l_max = 0; 
 	int contador = 0;
 	
-	float centena = 0; 
-	float dezena = 0; 
-	float unidade = 0;  
+	int unidade = 0;
+	int dezena = 0; 
+	int centena = 0; 
 	
-	float valor = 0;
+	printf("Entradas \n");
 	
 	printf("Valor minimo: "); 
 	scanf("%d%*c", &l_min);
@@ -32,19 +27,33 @@ int main()
 	printf("Valor maximo: "); 
 	scanf("%d%*c", &l_max);
 	
-	printf("Identificando centena, dezena e unidade de um valor digitado: \n");
-	centena = valor % 100; 
-	dezena = valor % 10;
-	unidade = valor 
-	
 	for(int i = l_min; i <= l_max; i++)
 	{
 		//Identificando centena, dezena e unidade do valor i:
-		unidade = i % 100;
-		dezena = i % 10;
-		printf("%d \n", i);
+		int valor = i; 
+		
+		//para obter o algarismo das unidades, basta extrair a parte decimal do valor ao dividir por 10:
+		unidade = valor % 10;
+		
+		//Após obter a parte decimal, deve-se obter a o quociente inteiro da divisão por 10 - ex: 101 vira 10; 
+		valor = valor / 10; 
+		
+		//Para obter o algarismo das dezenas, a lógica se mantém: basta obter a parte decimal do novo valor ao dividir por 10:
+		dezena = valor % 10; 
+		
+		//Após obter o algarismo das dezenas na parte decimal, o quociente inteiro da divisão por 10 é obtido novamente - ex: 10 vira 1.
+		valor = valor / 10; 
+		
+		//Por fim, o algarismo das centenas é obtido - obtendo novamente a parte decimal do valor ao dividir por 10; 
+		centena = valor % 10;
+		
+		//Verificando se há algum algarismo igual - Requisito do exercício - lógica utilizada:
+		//Caso não haja digitos repetidos, ou seja, os três algarismos são diferentes, será incrementado em uma unidade;
+			
+		if((unidade != dezena) && (unidade != centena) && (dezena != centena))
+			contador = contador + 1; 
 	}
 	
-	
+	printf("\n %d", contador);
 	
 }
