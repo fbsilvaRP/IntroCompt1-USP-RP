@@ -8,7 +8,7 @@ int main()
 	
 	while(condicional)
 	{
-		printf("\t --- Calculadora de impostos --- \n"); 
+		printf("\t -------- Calculadora de impostos -------- \n"); 
 		printf("Valor decimal: "); 
 		scanf("%f%*c", &salario); 
 		
